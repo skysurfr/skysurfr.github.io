@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Job Site</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Search Job</h1>
+      <form id="searchForm">
+        <input
+          type="text"
+          id="keywordInput"
+          name="keyword"
+          placeholder="Search keyword (e.g. python, java)"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const keyword = document
+            .getElementById("keywordInput")
+            .value.trim()
+            .toLowerCase();
+          if (keyword) {
+            window.location.href = `/search/${keyword}.html`;
+          }
+        });
+    </script>
+  </body>
+</html>
