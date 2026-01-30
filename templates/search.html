@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results : {{keyword}}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Search Results : {{keyword}}</h1>
+      <a href="/">Back To Search</a>
+      {% if db %}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Job</th>
+            <th scope="col">Company</th>
+            <th scope="col">Description</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in db %}
+          <tr>
+            <th scope="row">{{data.title}}</th>
+            <td>{{data.company}}</td>
+            <td>{{data.desc}}</td>
+            <td>
+              <a href="{{data.url}}" target="_blank">Apply &rarr;</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% elif db == [] %}
+      <p>No Search Result...</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
